@@ -1,0 +1,24 @@
+Console.WriteLine("O número \"e\", também conhecido como número de Euler, é um número irracional dado pela fórmula: (1 + 1/n)^n, onde n tende ao infinito.");
+Console.WriteLine("Outra forma de se chegar a este número é através da soma infinita: 1 + 1/1! + 1/2! + 1/3!... + 1/n!");
+Console.WriteLine("Hoje compararemos as duas fórmulas e veremos qual é a mais precisa, dado o valor de n.");
+Console.Write("n = ");
+int ent = int.Parse(Console.ReadLine());
+
+Console.WriteLine();
+
+Console.WriteLine("Valor dado pela fórmula (1 + 1/n)^n: " + Math.Pow(1+1D/ent, ent));
+Console.WriteLine("Valor dado pela soma infinita:       " + soma(ent, 1));
+Console.WriteLine("Valor aproximado de e:               " + Math.E);
+Console.ReadKey();
+
+double soma(int n, int m)
+{
+    if (m == n) return 1;
+    return 1/fat(m) + soma(n , ++m);
+}
+
+double fat(int m)
+{
+    if (m == 0) return 1;
+    return m * fat(--m);
+}
